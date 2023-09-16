@@ -5,18 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory</title>
 </head>
+<script>
+    function disableSubmitButton() {
+        var foodNameInput = document.getElementsByName('food_name')[0].value;
+        console.log(document.getElementsByName('food_name'))
+        // Check if the input field is not empty
+        if (foodNameInput.value.trim() !== null) {
+            // Disable the button
+            document.getElementById('submitButton').setAttribute('disabled', 'disabled');
+            
+            // Submit the form
+            document.getElementById('addFoodForm').submit();
+        } else {
+            // Optionally, you can display an alert or message to inform the user
+            alert('Please enter a food name before submitting.');
+        }
+    }
+</script>
 <body>
-    <h1><a href="/">Upload an Image</a></h1>
+    <h1><a href="/index">Upload an Image</a></h1>
     <h2>Current Inventory</h2>
-    <form method="POST" action="/add_food">
+    <form method="POST" action="/add_food" id="addFoodForm">
         <input type="text" name="food_name" placeholder="Enter Food Name" required>
-        <input type="submit" value="Add Food">
+        <input type="submit" name="add_food_button"  value="Add Food" onclick=disableSubmitButton()>
     </form>
     <h2>Item List</h1>
     <ul>
         {% for item in items %}
-        <li>{{ item.name }} entered at {{ item.time_of_entry }} expires {{item.days_for_expiry}} days later</li>
+        <li>{{ item.name }} entered at {{ item.time_of_entry }} expires in {{get_days_until_expiry(item.id)}} days </li>
         {% endfor %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Days Until Expiry</th>
+                    <th>Delete Item</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{get_days_until_expiry(item.id)}}</td>
+                    <td><a href="{{ url_for('delete_item', item_id=item.id) }}">Delete Item</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </ul>
 </body>
 </html> 
