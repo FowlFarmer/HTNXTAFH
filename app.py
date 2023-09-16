@@ -11,13 +11,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydatabase.db'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-
 class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     time_of_entry = db.Column(db.DateTime, default=datetime.utcnow)
     days_for_expiry = db.Column(db.Integer)
-
 
 def add_food_item_db(food_name):
     expiry_days = expiry_finder_cohere.ask_expiry(food_name)
