@@ -43,6 +43,7 @@ def show_inventory():
     # Pass the items to the "list.html" template
     return render_template('list.html', items=items)
 
+
 @app.route('/add_food', methods=['POST'])
 def add_food():
     if request.method == 'POST':
@@ -55,6 +56,28 @@ def add_food():
         db.session.commit()
 
         return redirect(url_for('show_inventory'))
+
+
+@app.route('/upload', methods=['POST'])
+def upload_image():
+    if request.method == 'POST':
+        # Get the uploaded image file
+        uploaded_image = request.files['image']
+
+        # Check if a file was uploaded
+        if uploaded_image.filename != '':
+            # Save the uploaded image to a temporary location (optional)
+            # Then, call your food classifier function with the image path
+            image_path = 'temp_image.jpg'  # Temporary file path
+            uploaded_image.save(image_path)
+
+            # Call the food classifier function
+            food_result = food_recognition_mp.recognise_food(image_path)
+
+            # Return the result to a new template (e.g., result.html)
+            return render_template('index.html')
+    # Return to the upload page if no file is uploaded or other errors occur
+    return render_template('index.html')
 
 
 if __name__ == "__main__":
