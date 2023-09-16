@@ -13,18 +13,14 @@ headers = {
 }
 
 api_url = 'https://api.api-ninjas.com/v1/imagetotext'
-image_file_descriptor = open('receipt.jpg', 'rb')
+image_file_descriptor = open('receipt.jpeg', 'rb')
 files = {'image': image_file_descriptor}
 r = requests.post(api_url, files=files, headers = headers)
 
 #print(r.json())
 
 long_data = r.json()
-text_blurb = ""
-for i in range(len(long_data)):
-    text_blurb += long_data[i]['text']
-    text_blurb += " "
-
+text_blurb = " ".join([v['text'] for v in long_data])
 print(text_blurb)
 
 
@@ -35,7 +31,7 @@ def ask_expiry(blurb):
   for i in range(3):
     try:
       response = co.generate(
-        prompt=f'I have a receipt with this information. Interpret the entries to get a name of only what you consider to be food items, all lowercase and separated by commas. Expand abbreviations into real words, for example trky brgr would become turkey burger. Output the list of the names of the food items. Do not explain what you are doing, just output a list and no other words.',
+        prompt=f'Interpret these reciept lines to decypher the food items, all lowercase and separated by commas. Expand abbreviations, ex: trky brgr -> turkey burger. Ignore unknown acroynms, or repeats. Do not list non food entries: {blurb}',
         model='command',
         max_tokens=300,
         temperature=0.7,

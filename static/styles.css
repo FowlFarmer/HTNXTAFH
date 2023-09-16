@@ -7,7 +7,7 @@ body {
 }
 
 .mainPage {
-    background-image: url("https://hips.hearstapps.com/hmg-prod/images/how-to-save-money-on-groceries-1673472736.png?resize=980:*");
+    /* background-image: url("https://hips.hearstapps.com/hmg-prod/images/how-to-save-money-on-groceries-1673472736.png?resize=980:*"); */
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -16,7 +16,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: white;
 }
 
 h1 {
@@ -68,7 +67,6 @@ li {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fff;
 }
 
 table {

@@ -92,6 +92,21 @@ def delete_item(item_id):
         return redirect(url_for('show_inventory'))
     else:
         return "Item not found", 404
+    
+# a route that re-calculates the expiry date of an item if its a weird value
+@app.route('/recalculate_expiry/<int:item_id>', methods=['GET', 'POST'])
+def recalculate_expiry(item_id):
+    # Query the database to find the item by its ID
+    item_to_recalculate = Item.query.get(item_id)
+
+    if item_to_recalculate:
+        # Delete the item from the database
+        item_to_recalculate.days_for_expiry = expiry_finder_cohere.ask_expiry(item_to_recalculate.name)
+        db.session.commit()
+
+        return redirect(url_for('show_inventory'))
+    else:
+        return "Item not found", 404
 
 
 @app.route('/upload', methods=['POST'])

@@ -162,3 +162,4 @@ cython_debug/
 keys.py
 database.db
 migrations/
+.DS_Store
