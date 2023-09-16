@@ -32,8 +32,28 @@
     <h2>Item List</h1>
     <ul>
         {% for item in items %}
-        <li>{{ item.name }} entered at {{ item.time_of_entry }} expires in {{get_days_until_expiry(item.id)}} days <a href="{{ url_for('delete_item', item_id=item.id) }}">Delete Item</a></li>
+        <li>{{ item.name }} entered at {{ item.time_of_entry }} expires in {{get_days_until_expiry(item.id)}} days </li>
         {% endfor %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Days Until Expiry</th>
+                    <th>Delete Item</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{get_days_until_expiry(item.id)}}</td>
+                    <td><a href="{{ url_for('delete_item', item_id=item.id) }}">Delete Item</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </ul>
 </body>
 </html> 

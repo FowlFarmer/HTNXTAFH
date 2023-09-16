@@ -30,7 +30,7 @@ def add_food_item_db(food_name):
 def get_days_until_expiry(item_id):
     item = Item.query.get(item_id)
     if item:
-        days_until_expiry = (datetime.utcnow() - item.time_of_entry).days - item.days_for_expiry # it will be minuse before, and + after expiry
+        days_until_expiry = item.days_for_expiry - (datetime.utcnow() - item.time_of_entry).days
         return days_until_expiry
     else:
         return -1
