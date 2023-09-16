@@ -68,9 +68,9 @@ def upload():
 
             # pass us over to the confirmation page
             return render_template('add_food_confirm.html',foodname=food_result)
-
-    # Return to the upload page if no file is uploaded or other errors occur
-    return render_template("upload.html")  
+    else:
+        # Return to the upload page if no file is uploaded or other errors occur
+        return render_template("upload.html")  
 
 
 # a simple get request for the temp_image.jpg file
@@ -102,9 +102,9 @@ def show_inventory():
 
 # make an app route for adding food where the name of the item is a param like /add_food?name=apple
 @app.route('/add_food', methods=['POST'])
-def add_food_post(food_name):
+def add_food_post():
     if request.method == 'POST':
-        food_name = request.form['food_name']
+        food_name = request.form.get('food_name')
         add_food_item_db(food_name)
         return redirect(url_for('show_inventory'))
     

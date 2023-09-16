@@ -14,7 +14,7 @@
         <img src="{{ url_for('get_temp_image') }}" alt="temp_image.jpg" height=160>
         <p>Edit the food name in the box below if it's incorrect.</p>
         <form action="/add_food" method="POST">
-            <input type="text" name="food_name" value={{foodname}} required>
+            <input type="text" id="food_name" name="food_name" value={{foodname}} required>
             <input type="submit" value="Confirm">
         </form>
     </div>
