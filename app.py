@@ -31,7 +31,18 @@ def get_days_until_expiry(item_id):
         days_until_expiry = item.days_for_expiry - (datetime.utcnow() - item.time_of_entry).days
         return days_until_expiry
     else:
-        return -1
+        return None
+    
+def interpret_expiry_date(expiry_date):
+    if expiry_date == None:
+        return "Unknown"
+    elif expiry_date >= 100000:
+        return "Never"
+    else:
+        return f"{expiry_date} days"
+    
+def expiry_text(item_id):
+    return interpret_expiry_date(get_days_until_expiry(item_id))
 
 @app.route('/index', methods=["GET", "POST"])
 def index():
@@ -57,7 +68,7 @@ def show_inventory():
     items = Item.query.all()
 
     # Pass the items to the "list.html" template
-    return render_template('list.html', items=items, get_days_until_expiry=get_days_until_expiry)
+    return render_template('list.html', items=items, expiry_text=expiry_text)
 
 
 @app.route('/add_food', methods=['POST'])

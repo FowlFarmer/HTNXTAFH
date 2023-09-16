@@ -23,14 +23,13 @@
     }
 </script>
 <body>
-    <h1><a href="/index">Upload an Image</a></h1>
-    <h2>Current Inventory</h2>
-    <form method="POST" action="/add_food" id="addFoodForm">
-        <input type="text" name="food_name" placeholder="Enter Food Name" required>
-        <input type="submit" name="add_food_button"  value="Add Food" onclick=disableSubmitButton()>
-    </form>
-    <h2>Item List</h1>
-    <ul>
+    <div class="mainPage">
+        <h1><a href="/index">Upload an Image</a></h1>
+        <h2>Current Inventory</h2>
+        <form method="POST" action="/add_food" id="addFoodForm">
+            <input type="text" name="food_name" placeholder="Enter Food Name" required>
+            <input type="submit" name="add_food_button" value="Add Food" id="addFoodButton" onclick="disableSubmitButton()">
+        </form>
         <table>
             <thead>
                 <tr>
@@ -38,23 +37,21 @@
                     <th>Name</th>
                     <th>Days Until Expiry</th>
                     <th>Delete Item</th>
-                    <th>Date Purchased</th>
-                    <th>Expiry Date</th>
                 </tr>
             </thead>
             <tbody>
+                <!-- Placeholders for your templating engine -->
                 {% for item in items %}
                 <tr>
                     <td>{{ item.id }}</td>
                     <td>{{ item.name }}</td>
-                    <td>{{get_days_until_expiry(item.id)}}</td>
+                    <td>{{ expiry_text(item.id) }}</td>
                     <td><a href="{{ url_for('delete_item', item_id=item.id) }}">Delete Item</a></td>
-                    <td>{{ item.time_of_entry }}</td>
-                    <td>{{ item.days_for_expiry }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-    </ul>
+    </div>
 </body>
+
 </html> 
