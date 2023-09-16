@@ -56,6 +56,16 @@ def add_food():
         db.session.commit()
 
         return redirect(url_for('show_inventory'))
+"""
+def update_date():
+    items = Item.query.all()  # Fetch all items from the database
+    for item in items:
+        # Update the integer variable for each item (e.g., increment it by 1)
+        time_difference_past = datetime.now() - item.time_of_entry
+        days_ago_entered = int(time_difference_past.totalseconds()/86400)
+        item.days_for_expiry = item.days_for_expiry - item.days_ago_entered
+    db.session.commit()"""
+
 
 
 @app.route('/upload', methods=['POST'])

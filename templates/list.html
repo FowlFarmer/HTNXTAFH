@@ -14,9 +14,22 @@
     </form>
     <h2>Item List</h1>
     <ul>
-        {% for item in items %}
-        <li>{{ item.name }} entered at {{ item.time_of_entry }} expires {{item.days_for_expiry}} days later</li>
-        {% endfor %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </ul>
 </body>
 </html> 
