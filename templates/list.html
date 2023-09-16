@@ -12,5 +12,11 @@
         <input type="text" name="food_name" placeholder="Enter Food Name" required>
         <input type="submit" value="Add Food">
     </form>
+    <h2>Item List</h1>
+    <ul>
+        {% for item in items %}
+        <li>{{ item.name }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
