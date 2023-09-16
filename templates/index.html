@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload Image</title>
+    <link rel="stylesheet" href="../static/styles.css">
 </head>
 <body>
-    <h1><a href="/list">Inventory</a></h1>
-    <h2>Upload a Food Photo</h2>
-    <form action="/upload" method="POST" enctype="multipart/form-data">
-        <input type="file" name="image" accept="image/*" required>
-        <br>
-        <input type="submit" value="Upload Food Image">
-    </form>
+    <div class="mainPage">
+        <h2>Upload a Food Photo</h2>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required>
+            <br>
+            <input type="submit" value="Upload Food Image">
+        </form>
+    </div>
+    
 </body>
 </html>
