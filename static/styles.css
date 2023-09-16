@@ -19,18 +19,24 @@ body {
     color: white;
 }
 
-h2 {
-    font-size: 28px;
+h1 {
+    font-size: 36px;
     margin-bottom: 20px;
 }
 
-input[type="file"] {
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
     padding: 10px;
     border: none;
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 5px;
     width: 100%;
     max-width: 300px;
+    font-size: 16px;
 }
 
 input[type="submit"] {
@@ -42,8 +48,51 @@ input[type="submit"] {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-size: 16px;
 }
 
 input[type="submit"]:hover {
     background-color: #ff5500;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #333;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+a:hover {
+    text-decoration: underline;
 }

@@ -23,47 +23,42 @@
     }
 </script>
 <body>
-    <h1><a href="/index">Upload an Image</a></h1>
-    <h2>Current Inventory</h2>
-    <form method="POST" action="/add_food" id="addFoodForm">
-        <input type="text" name="food_name" placeholder="Enter Food Name" required>
-        <input type="submit" name="add_food_button"  value="Add Food" onclick=disableSubmitButton()>
-    </form>
-    <h2>Item List</h1>
-    <ul>
-        {% for item in items %}
-        <li>{{ item.name }} entered at {{ item.time_of_entry }} expires in {{get_days_until_expiry(item.id)}} days </li>
-        {% endfor %}
+    <div class="mainPage">
+        <h1><a href="/index">Upload an Image</a></h1>
+        <h2>Current Inventory</h2>
+        <form method="POST" action="/add_food" id="addFoodForm">
+            <input type="text" name="food_name" placeholder="Enter Food Name" required>
+            <input type="submit" name="add_food_button" value="Add Food" id="addFoodButton" onclick="disableSubmitButton()">
+        </form>
+        <h2>Item List</h2>
+        <ul>
+            <!-- Placeholders for your templating engine -->
+            {% for item in items %}
+            <li>{{ item.name }} entered at {{ item.time_of_entry }} expires in {{ get_days_until_expiry(item.id) }} days</li>
+            {% endfor %}
+        </ul>
         <table>
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-<<<<<<< Updated upstream
                     <th>Days Until Expiry</th>
                     <th>Delete Item</th>
-=======
-                    <th>Date Purchased</th>
-                    <th>Expiry Date</th>
->>>>>>> Stashed changes
                 </tr>
             </thead>
             <tbody>
+                <!-- Placeholders for your templating engine -->
                 {% for item in items %}
                 <tr>
                     <td>{{ item.id }}</td>
                     <td>{{ item.name }}</td>
-<<<<<<< Updated upstream
-                    <td>{{get_days_until_expiry(item.id)}}</td>
+                    <td>{{ get_days_until_expiry(item.id) }}</td>
                     <td><a href="{{ url_for('delete_item', item_id=item.id) }}">Delete Item</a></td>
-=======
-                    <td>{{ item.time_of_entry }}</td>
-                    <td>{{ item.days_for_expiry }}</td>
->>>>>>> Stashed changes
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-    </ul>
+    </div>
 </body>
+
 </html> 
