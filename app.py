@@ -3,7 +3,8 @@ from datetime import datetime
 from sqlalchemy import DateTime
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
-
+import expiry_finder_cohere
+import food_recognition_mp
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydatabase.db'
@@ -14,7 +15,8 @@ migrate = Migrate(app, db)
 class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
-
+    time_of_entry = db.Column(db.DateTime, default=datetime.utcnow)
+    days_for_expiry = db.Column(db.Integer)
 
 @app.route('/', methods=["GET", "POST"])
 def index():
@@ -46,9 +48,10 @@ def show_inventory():
 def add_food():
     if request.method == 'POST':
         food_name = request.form['food_name']
+        expiry_days = expiry_finder_cohere.ask_expiry(food_name)
 
         # Create a new Food object and add it to the database
-        new_food = Item(name=food_name)
+        new_food = Item(name=food_name, days_for_expiry = expiry_days)
         db.session.add(new_food)
         db.session.commit()
 
