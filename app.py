@@ -28,7 +28,7 @@ def add_food_item_db(food_name):
     db.session.commit()
 
 
-@app.route('/', methods=["GET", "POST"])
+@app.route('/index', methods=["GET", "POST"])
 def index():
     if request.method == "POST":
         # Handle image upload
@@ -46,7 +46,7 @@ def index():
     return render_template("index.html")
 
 
-@app.route('/list')
+@app.route('/', methods=["GET", "POST"])
 def show_inventory():
     # Query the database to retrieve all items
     items = Item.query.all()
