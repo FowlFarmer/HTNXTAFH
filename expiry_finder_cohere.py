@@ -6,7 +6,7 @@ co = cohere.Client(COHERE_API_KEY)
 
 TESTING = False
 ASK_TRIES = 3
-TRY_DELAY_S = 20
+TRY_DELAY_S = 5
 
 def processs_text_answer(in_text):
 
