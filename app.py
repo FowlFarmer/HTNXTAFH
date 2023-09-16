@@ -1,6 +1,23 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+from sqlalchemy import DateTime
+from flask_migrate import Migrate
+
+
+
+
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydatabase.db'
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+
+class Item(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+
+
 
 @app.route('/', methods=["GET", "POST"])
 def index():
