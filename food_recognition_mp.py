@@ -14,11 +14,15 @@ options = ImageClassifierOptions(
     max_results=1,
     running_mode=VisionRunningMode.IMAGE)
 
-with ImageClassifier.create_from_options(options) as classifier:
-  # The classifier is initialized. Use it here.
-  # ...
-    mp_image = mp.Image.create_from_file('test.jpg')
-    classification_result = classifier.classify(mp_image)
-    # the first 0 is since we are only doing one classificaiton at a time, and the second is to get the first result
-    top_answer = classification_result.classifications[0].categories[0].category_name
-    print(top_answer)
+def recognise_food(imagePath):
+  with ImageClassifier.create_from_options(options) as classifier:
+    # The classifier is initialized. Use it here.
+    # ...
+      mp_image = mp.Image.create_from_file(imagePath)
+      classification_result = classifier.classify(mp_image)
+      # the first 0 is since we are only doing one classificaiton at a time, and the second is to get the first result
+      top_answer = classification_result.classifications[0].categories[0].category_name
+      return top_answer
+
+if __name__ == "__main__":
+   print(recognise_food("test.jpg"))

@@ -42,6 +42,7 @@ def processs_text_answer(in_text):
   if found_option == "inf":
     return timeframe_mapping_to_days["inf"]
 
+  value = 0
   # range detection
   if "-" not in numbers_only_string or len(numbers_only_string.split("-")) == 1: # the second arugment is in case of answers like "3 days to expire", which becomes "3 -" becuase of the to filter
     value = int(numbers_only_string)
@@ -57,7 +58,6 @@ def processs_text_answer(in_text):
       v2 = None
 
     if not v1 == None and not v2 == None:
-
       value = (v1 + v2)//2
     elif v1 == None:
       value = v2
