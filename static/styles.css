@@ -124,7 +124,7 @@ a:hover {
 .top{
     position:absolute;
     top:0;
-    left:82%;
+    left:75%;
     height:10%;
     margin-top:3%;
     color:white;
@@ -132,6 +132,7 @@ a:hover {
 .foodListBut{
     color:white;
     font-family: 'Comfortaa', sans-serif;
+    font-size:25px;
 }
 .overlay{
     position:fixed;
