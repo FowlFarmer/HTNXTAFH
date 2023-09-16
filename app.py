@@ -35,12 +35,12 @@ def index():
 
 
 @app.route('/list')
-def show_results():
-    # You can pass any necessary data to the "results.html" template here
-    # For example, you can pass the results of image recognition or other data
-    # result_data = ...
+def show_inventory():
+    # Query the database to retrieve all items
+    items = Item.query.all()
 
-    return render_template('list.html')
+    # Pass the items to the "list.html" template
+    return render_template('list.html', items=items)
 
 @app.route('/add_food', methods=['POST'])
 def add_food():
