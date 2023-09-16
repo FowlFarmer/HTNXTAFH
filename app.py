@@ -39,7 +39,10 @@ def interpret_expiry_date(expiry_date):
     elif expiry_date >= 100000:
         return "Never"
     else:
-        return f"{expiry_date} days"
+        if expiry_date < 0:
+            return f"{abs(expiry_date)} days ago"
+        else:
+            return f"{expiry_date} days"
     
 def expiry_text(item_id):
     return interpret_expiry_date(get_days_until_expiry(item_id))
