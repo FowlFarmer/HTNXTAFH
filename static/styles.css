@@ -14,7 +14,7 @@ body {
 }
 
 .mainPage {
-    background-image: url("https://cdn.discordapp.com/attachments/1150455788838596628/1152707160736809100/3426116__1_-removebg.png");
+    background-image: url("backgroundArt.png");
     background-size: cover;
     background-position: center;
     background-color:rgba(157, 166, 83);

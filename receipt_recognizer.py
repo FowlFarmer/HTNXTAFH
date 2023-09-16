@@ -3,33 +3,24 @@ from keys import OPENAI_KEY
 import requests
 import openai
 
-key = API_NINJAS_KEY
-
-#print(key)
-
-headers = {
-    'X-Api-Key': key  # Include your API key with 'Bearer ' prefix
+ninja_headers = {
+    'X-Api-Key': API_NINJAS_KEY
 }
 
-api_url = 'https://api.api-ninjas.com/v1/imagetotext'
-image_file_descriptor = open('receipt.jpeg', 'rb')
-files = {'image': image_file_descriptor}
-r = requests.post(api_url, files=files, headers = headers)
+ninja_api_url = 'https://api.api-ninjas.com/v1/imagetotext'
 
-#print(r.json())
+def image_to_text(image_file_path):
+  image_file_descriptor = open(image_file_path, 'rb')
+  files = {'image': image_file_descriptor}
+  r = requests.post(ninja_api_url, files=files, headers = ninja_headers)
 
-long_data = r.json()
-text_blurb = " ".join([v['text'] for v in long_data])
-#print(text_blurb)
+  long_data = r.json()
+  extractedText = " ".join([v['text'] for v in long_data])
+  return extractedText
 
-
-
-# ------------------- UP: IMG TO TEXT, DOWN: TEXT CLEANUP
-def ask_expiry(blurb):
-  
+def interpret_receipt(text):
   # Define the data payload
   openai.api_key = OPENAI_KEY
-  #print(blurb)
   response = openai.ChatCompletion.create(
     model="gpt-4",
     temperature=1,
@@ -40,11 +31,13 @@ def ask_expiry(blurb):
     messages=[
     {
       "role": "user",
-      "content": "I have a receipt with this information. Interpret the entries to get a name of only what you consider to be food items, all lowercase and separated by commas. Expand abbreviations into real words, for example trky brgr would become turkey burger. Output the list of the names of the food items. Put the adjectives before the type of food. For example, it's preferred to say red apple over apple red. Do not explain what you are doing, just output a list and no other words: "+blurb
+      "content": f"I have a receipt with this information. Interpret the entries to get a name of only what you consider to be food items, all lowercase and separated by commas. Expand abbreviations into real words, for example trky brgr would become turkey burger. Output the list of the names of the food items. Put the adjectives before the type of food. For example, it's preferred to say red apple over apple red. Do not explain what you are doing, just output a list and no other words: {text}"
     }
     ]
   )
-  return response
+
+  text_answer = response["choices"][0]["message"]["content"]
+  return text_answer
 
 """data = {
       'prompt': prompt,
@@ -82,4 +75,7 @@ def ask_expiry(blurb):
       print(f"Failed to query cohere API for item, trying again...")
       continue"""
 
-print(ask_expiry(text_blurb)["choices"][0]["message"]["content"])
+if __name__ == '__main__':
+  text = image_to_text('receipt.jpeg')
+  print(text)
+  print(interpret_receipt(text))

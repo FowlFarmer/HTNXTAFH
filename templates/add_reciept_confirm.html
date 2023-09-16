@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <div class="mainPage">
+        <h1>Confirm reciept recognition</h1>
+        <h2>PreserVia.tech</h2>
+        <!-- insert the image temp_image.jpg -->
+        <img src="{{ url_for('get_temp_image') }}" alt="temp_image.jpg" height=500>
+        <p>Edit the food name in the box below if it's incorrect.</p>
+        <form action="/add_food_bulk" method="POST">
+            <textarea id="reciept_list" name="reciept_list" required>{{reciept_text}}</textarea>
+            <input type="submit" value="Confirm">
+        </form>
+    </div>
+    
+</body>
+</html>

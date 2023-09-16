@@ -5,6 +5,7 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 import expiry_finder_cohere
 import food_recognition_mp
+import receipt_recognizer
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydatabase.db'
@@ -39,7 +40,10 @@ def interpret_expiry_date(expiry_date):
     elif expiry_date >= 100000:
         return "Never"
     else:
-        return f"{expiry_date} days"
+        if expiry_date < 0:
+            return f"{abs(expiry_date)} days ago"
+        else:
+            return f"{expiry_date} days"
     
 def expiry_text(item_id):
     return interpret_expiry_date(get_days_until_expiry(item_id))
@@ -71,6 +75,37 @@ def upload():
     else:
         # Return to the upload page if no file is uploaded or other errors occur
         return render_template("upload.html")  
+    
+
+@app.route('/upload-receipt', methods=["POST"])
+def upload_receipt():
+    if request.method == 'POST':
+        # Get the uploaded image file
+        uploaded_image = request.files['image']
+
+        # Check if a file was uploaded
+        if uploaded_image.filename != '':
+            # Save the uploaded image to a temporary location (optional)
+            image_path = 'static/temp_receipt.jpg'  # Temporary file path
+            uploaded_image.save(image_path)
+
+            # Call the reciept interpreter
+            reciept_text = receipt_recognizer.image_to_text(image_path)
+            reciept_text = receipt_recognizer.interpret_receipt(reciept_text)
+
+            # pass us over to the confirmation page
+            return render_template('add_reciept_confirm.html',reciept_text=reciept_text)
+    
+@app.route('/add_food_bulk', methods=['POST'])
+def add_food_bulk():
+    if request.method == 'POST':
+        reciept_list = request.form.get('reciept_list')
+        reciept_list = reciept_list.replace("\r", "").replace("\n", "")
+        split_lit = reciept_list.split(", ")
+
+        for food_name in split_lit:
+            add_food_item_db(food_name)
+        return redirect(url_for('show_inventory'))
 
 
 # a simple get request for the temp_image.jpg file

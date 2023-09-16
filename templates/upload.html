@@ -12,12 +12,22 @@
         <div class="top">
             <a class="foodListBut" href="/">Take me to the <strong>Food List</strong></a>
         </div>
-        <img class="logo"src="https://cdn.discordapp.com/attachments/1150455788838596628/1152696969949618337/image.png">
-        
-            <form action="/upload" method="POST" enctype="multipart/form-data">
-                <input type="file" name="image" accept="image/*" required class="fileUpload">
-                <input type="submit" value="Submit Food Image">
-            </form>
+        <img class="logo"src="{{ url_for('static', filename='logo.png') }}">
+        <h2>Manually add food</h2>
+        <form method="POST" action="/" id="addFoodForm">
+            <input type="text" name="food_name" placeholder="Enter Food Name" required>
+            <input type="submit" name="add_food_button" value="Add Food" id="addFoodButton" onclick="disableSubmitButton()">
+        </form>
+        <h2>Upload food photo</h2>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required class="fileUpload">
+            <input type="submit" value="Submit Food Image">
+        </form>
+        <h2>Upload reciept</h2>
+        <form action="/upload-receipt" method="POST" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required class="fileUpload">
+            <input type="submit" value="Submit Receipt">
+        </form>
     </div>
     
 </body>
