@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;600&display=swap');
 body {
+    font-family: 'Comfortaa', sans-serif;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -8,7 +10,7 @@ body {
 .file{
     width:40%;
     background:rgba(255, 255, 255, 0.2);
-    
+    font-family: 'Comfortaa', sans-serif;
 }
 
 .mainPage {
@@ -52,6 +54,7 @@ input[type="text"] {
     width: 100%;
     max-width: 300px;
     font-size: 16px;
+    font-family: 'Comfortaa', sans-serif;
 }
 
 input[type="submit"] {
@@ -64,6 +67,7 @@ input[type="submit"] {
     cursor: pointer;
     transition: background-color 0.3s;
     font-size: 16px;
+    font-family: 'Comfortaa', sans-serif;
 }
 
 input[type="submit"]:hover {
@@ -112,21 +116,22 @@ a:hover {
     text-decoration: underline;
 }
 .logo{
-    width:40%;
-    margin-bottom:50px;
+    width:50%;
+    margin-bottom:60px;
     border-radius:50px;
     box-shadow: 0 0 10px 10px rgba(157, 166, 83);
 }
 .top{
     position:absolute;
     top:0;
-    left:85%;
+    left:82%;
     height:10%;
-    margin-top:2%;
+    margin-top:3%;
     color:white;
 }
 .foodListBut{
     color:white;
+    font-family: 'Comfortaa', sans-serif;
 }
 .overlay{
     position:fixed;
@@ -135,7 +140,12 @@ a:hover {
     opacity:0.2;
     z-index:1;
 }
-.fileUpload{
-    width:20%;
-    background-color: white;
+.fileUpload {
+    background: rgba(255, 255, 255, 0.7);
+    border: none; /* Add this to remove the default input border */
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    display:block;
+    font-family: 'Comfortaa', sans-serif;
 }
