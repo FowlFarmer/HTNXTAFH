@@ -15,7 +15,7 @@
     <h2>Item List</h1>
     <ul>
         {% for item in items %}
-        <li>{{ item.name }}</li>
+        <li>{{ item.name }} entered at {{ item.time_of_entry }} expires {{item.days_for_expiry}} days later</li>
         {% endfor %}
     </ul>
 </body>

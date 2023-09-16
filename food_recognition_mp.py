@@ -17,7 +17,6 @@ options = ImageClassifierOptions(
 def recognise_food(imagePath):
   with ImageClassifier.create_from_options(options) as classifier:
     # The classifier is initialized. Use it here.
-    # ...
       mp_image = mp.Image.create_from_file(imagePath)
       classification_result = classifier.classify(mp_image)
       # the first 0 is since we are only doing one classificaiton at a time, and the second is to get the first result

@@ -4,7 +4,7 @@ import re
 import cohere
 co = cohere.Client(COHERE_API_KEY)
 
-TESTING = True
+TESTING = False
 ASK_TRIES = 3
 TRY_DELAY_S = 20
 
