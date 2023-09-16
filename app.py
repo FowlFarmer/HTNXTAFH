@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from sqlalchemy import DateTime
 from flask_migrate import Migrate
+from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
@@ -41,6 +41,18 @@ def show_results():
     # result_data = ...
 
     return render_template('list.html')
+
+@app.route('/add_food', methods=['POST'])
+def add_food():
+    if request.method == 'POST':
+        food_name = request.form['food_name']
+
+        # Create a new Food object and add it to the database
+        new_food = Item(name=food_name)
+        db.session.add(new_food)
+        db.session.commit()
+
+        return redirect(url_for('list.html'))
 
 
 if __name__ == "__main__":
