@@ -27,7 +27,7 @@ body {
     top:0;
 }
 .mainPageList {
-    background-color:rgba(157, 166, 83);
+    background-color:rgba(177, 186, 103);
     width: 100%;
     min-height: 100vh;
     display: flex;
@@ -81,7 +81,7 @@ ul {
 
 li {
     margin-bottom: 10px;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     padding: 10px;
     border-radius: 5px;
     display: flex;
@@ -90,16 +90,18 @@ li {
 }
 
 table {
-    width: 80%;
+    width: 58%;
     margin-top: 20px;
     border-collapse: collapse;
     margin-bottom:50px;
+    background-color: white;
 }
 
 th, td {
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     padding: 10px;
     text-align: center;
+    font-family: 'Comfortaa', sans-serif;
 }
 
 th {
@@ -149,4 +151,53 @@ a:hover {
     font-size: 16px;
     display:block;
     font-family: 'Comfortaa', sans-serif;
+}
+.confirm{
+    font-family: 'Comfortaa', sans-serif;
+    color:white;
+    margin-right:15px;
+    margin-left:15px;
+
+}
+.confirmBox{
+    background-color:rgba(157, 166, 83);
+    box-shadow: 0 0 10px 10px rgba(157, 166, 83);
+    margin-bottom:20px;
+}
+.uploadPhoto{
+    background-color: rgb(10, 148, 81);
+    border-radius:10px;
+    padding:10px;
+    color:white;
+    font-family: 'Comfortaa', sans-serif;
+}
+.sideBackgroundLeft{
+    position:fixed;
+    background-image:url("https://cdn.discordapp.com/attachments/1150455788838596628/1152707160736809100/3426116__1_-removebg.png");
+    height:100vh;
+    left:0;
+    top:0;
+    width:19%;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-color:rgba(157, 166, 83);
+}
+.sideBackgroundRight{
+    position:fixed;
+    background-image:url("https://cdn.discordapp.com/attachments/1150455788838596628/1152737397830848616/image_19.png");
+    height:100vh;
+    right:0;
+    top:0;
+    width:19%;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-color:rgba(157, 166, 83);
+}
+.foodList{
+    margin-top:50px;
+    font-family: 'Comfortaa', sans-serif;
+    font-size:45px;
+    color:#333
 }

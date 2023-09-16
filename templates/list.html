@@ -25,12 +25,13 @@
 </script>
 <body>
     <div class="mainPageList">
-        <h1>Inventory</h1>
-        <h2><a href="/upload">Upload a photo</a></h2>
-        <form method="POST" id="addFoodForm">
-            <input type="text" name="food_name" placeholder="Enter Food Name" required>
-            <input type="submit" name="add_food_button" value="Add Food" id="addFoodButton" onclick="disableSubmitButton()">
-        </form>
+        <h1 class="foodList"><strong>Food List</strong></h1>
+        <div class="sideBackgroundLeft">
+            <!-- <img src="https://cdn.discordapp.com/attachments/1150455788838596628/1152707160736809100/3426116__1_-removebg.png"> -->
+        </div>
+        <div class="sideBackgroundRight">
+        </div>
+        <h2><a class="uploadPhoto" href="/upload">Upload a photo</a></h2>
         <table>
             <thead>
                 <tr>

@@ -8,11 +8,12 @@
 </head>
 <body>
     <div class="mainPage">
-        <h1>Confirm image recognition</h1>
-        <h2>PreserVia.tech</h2>
-        <!-- insert the image temp_image.jpg -->
-        <img src="{{ url_for('get_temp_image') }}" alt="temp_image.jpg" height=160>
-        <p>Edit the food name in the box below if it's incorrect.</p>
+        <div class="confirmBox">
+            <h1 class="confirm">Confirm image recognition</h1>
+            <img src="{{ url_for('get_temp_image') }}" alt="temp_image.jpg" height=160>
+            <p class="confirm">Edit the food name in the box below if it's incorrect.</p>
+        </div>
+        
         <form action="/add_food" method="POST">
             <input type="text" id="food_name" name="food_name" value={{foodname}} required>
             <input type="submit" value="Confirm">
