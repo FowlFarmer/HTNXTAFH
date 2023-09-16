@@ -7,13 +7,19 @@
     <link rel="stylesheet" href="../static/styles.css">
 </head>
 <body>
+    <img src="" class="overlay">
     <div class="mainPage">
-        <h2>PreserVia.tech</h2>
-        <form action="/upload" method="POST" enctype="multipart/form-data">
-            <input type="file" name="image" accept="image/*" required>
-            <br>
-            <input type="submit" value="Upload Food Image">
-        </form>
+        <div class="top">
+            <a class="foodListBut" href="list.html">Take me to the <strong>Food List</strong></a>
+        </div>
+        <img class="logo"src="https://cdn.discordapp.com/attachments/1150455788838596628/1152696969949618337/image.png">
+        
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <div class = "fileUpload">
+                    <input type="file" name="image" accept="image/*" required>
+                </div>
+                <input type="submit" value="Upload Food Image">
+            </form>
     </div>
     
 </body>
