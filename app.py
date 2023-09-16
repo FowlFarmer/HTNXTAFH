@@ -52,7 +52,7 @@ def add_food():
         db.session.add(new_food)
         db.session.commit()
 
-        return redirect(url_for('list.html'))
+        return redirect(url_for('show_inventory'))
 
 
 if __name__ == "__main__":
