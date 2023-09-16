@@ -163,3 +163,4 @@ keys.py
 database.db
 migrations/
 .DS_Store
+static/temp_image.jpg

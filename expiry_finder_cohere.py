@@ -77,7 +77,7 @@ def ask_expiry(item_name):
     # ask the AI
     try:
       response = co.generate(
-        prompt=f'How long this food item take to expire in the fridge, in the format, exactly "N days". Be acurate. Assume things are in store bought condition, in their usual packaging. If it does not expire, return "inf". As a response to "bananas": "7 days". Item: {item_name}',
+        prompt=f'You are a robot. How long this food item take to expire in the fridge, in the format, exactly "N days". Be acurate. Assume things are in store bought condition, in their usual packaging. If it does not expire, return "inf", but be conservative with these calls. As a response to "bananas": "7 days". Item: {item_name}',
         model='command',
         max_tokens=10,
         temperature=0.7,

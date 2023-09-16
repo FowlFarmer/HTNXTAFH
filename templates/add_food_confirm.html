@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <div class="mainPage">
+        <h1>Confirm image recognition</h1>
+        <h2>PreserVia.tech</h2>
+        <!-- insert the image temp_image.jpg -->
+        <img src="{{ url_for('get_temp_image') }}" alt="temp_image.jpg" height=160>
+        <p>Edit the food name in the box below if it's incorrect.</p>
+        <form action="/add_food" method="POST">
+            <input type="text" name="food_name" value={{foodname}} required>
+            <input type="submit" value="Confirm">
+        </form>
+    </div>
+    
+</body>
+</html>
