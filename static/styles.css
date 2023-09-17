@@ -102,11 +102,18 @@ li {
 }
 
 table {
-    width: 58%;
+    width: 56%;
     margin-top: 20px;
     border-collapse: collapse;
     margin-bottom:30px;
     background-color: white;
+}
+.foodListBG{
+    background-image:url('https://cdn.discordapp.com/attachments/1150455788838596628/1152833444972335114/peepeepoologo18.png');
+    background-position:center;
+    background-size:cover;
+    padding:40px;
+    border-radius:50px;
 }
 
 th, td {
@@ -198,9 +205,12 @@ a:hover {
     padding:10px;
     color:white;
     font-family: 'Comfortaa', sans-serif;
-    margin-bottom:50px;
+    margin-bottom:10px;
     margin-right:20px;
+    margin-top:20px;
     margin-left:20px;
+    border-color:#ccc;
+    font-size:20px;
 
 }
 .twobuttons{
@@ -239,7 +249,7 @@ a:hover {
 .foodList{
     margin-top:50px;
     font-family: 'Comfortaa', sans-serif;
-    font-size:45px;
+    font-size:50px;
     color:#333
 }
 .mainPageBack{
