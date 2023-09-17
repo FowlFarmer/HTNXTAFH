@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload Image</title>
+    <title>Recipe</title>
     <link rel="stylesheet" href="../static/styles.css">
 </head>
 <body>
@@ -13,15 +13,37 @@
     </div>
     <div class="mainPageList">
         <h1 class="foodList"><strong>Recipe</strong></h1>
-        <div class="sideBackgroundLeft">
+        <div class="recipeHolder">
+            <div>
+                <h1><b>Chicken and Spinach Yoghurt Rice</b></h1>
+                
+                <h2><b>Ingredients:</b></h2>
+                <ul>
+                <li><b>Chicken Breast</b> - 2 pieces</li>
+                <li><b>White Rice</b> - 1 cup</li>
+                <li><b>Spinach</b> - 2 cups</li>
+                <li><b>Plain Yoghurt</b> - 1 cup</li>
+                <li><b>Bread</b> - 2 slices (Optional)</li>
+                <li><b>Asparagus</b> - 5 stems</li>
+                <li><b>Kale</b> - 1 cup (Optional)</li>
+                <li><b>Salt and Pepper</b> - to taste</li>
+                </ul>
+                
+                <h2><b>Instructions:</b></h2>
+                <ol>
+                <li><b>Cook the rice:</b> Rinse 1 cup of rice under cold water until water runs clear. Boil rice in a 3:1 water-to-rice ratio until it's cooked and fluffy. Set aside.</li>
+                
+                <li><b>Prepare the chicken:</b> Season chicken breasts with salt and pepper. Grill chicken until fully cooked and juices run clear. Then slice into thin strips.</li>
+                
+                <li><b>Sauté vegetables:</b> On medium heat, saute asparagus and spinach until tender. If using kale, add it last as it cooks quickly.</li>
+                
+                <li><b>Mix ingredients in a bowl:</b> In a large bowl, mix the cooked rice, chicken strips and sautéed vegetables. Top with a cup of plain yoghurt and gently stir until everything is well combined.</li>
+                
+                <li><b>Serve:</b> You can serve this dish with slices of bread on the side if you prefer. Enjoy your homemade Chicken and Spinach Yoghurt Rice!</li>
+                </ol>
+                
+                </div>
         </div>
-        <div class="sideBackgroundRight">
-        </div>
-        <ul>
-            {% for ingredient in selected_foods %}
-                <li>{{ ingredient }}</li>
-            {% endfor %}
-        </ul>
     </div>
     
 

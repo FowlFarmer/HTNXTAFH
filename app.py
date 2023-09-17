@@ -6,6 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 import expiry_finder_cohere
 import food_recognition_mp
 import receipt_recognizer
+import recipie_creator
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydatabase.db'
@@ -167,6 +168,7 @@ def delete_item(item_id):
     else:
         return "Item not found", 404
     
+    
 # a route that re-calculates the expiry date of an item if its a weird value
 @app.route('/recalculate_expiry/<int:item_id>', methods=['GET', 'POST'])
 def recalculate_expiry(item_id):
@@ -181,6 +183,16 @@ def recalculate_expiry(item_id):
         return redirect(url_for('show_inventory'))
     else:
         return "Item not found", 404
+    
+# a page to show the recipie
+@app.route('/auto_recipie', methods=['GET'])
+def auto_recipie(): # if its a GET request, tell them to go back the main screen and select items, same for if they didnt select any items. If its a POST, generate the recipie and show it
+    return render_template('recipe.html')
+    
+    # if request.method == 'POST':
+    #     recipie_creator.generate_recipe()
+
+    #     # for now just the page
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True,port=8000)

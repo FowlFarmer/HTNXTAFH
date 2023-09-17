@@ -10,13 +10,15 @@ ninja_headers = {
 ninja_api_url = 'https://api.api-ninjas.com/v1/imagetotext'
 
 def image_to_text(image_file_path):
-  image_file_descriptor = open(image_file_path, 'rb')
-  files = {'image': image_file_descriptor}
-  r = requests.post(ninja_api_url, files=files, headers = ninja_headers)
-
-  long_data = r.json()
-  extractedText = " ".join([v['text'] for v in long_data])
-  return extractedText
+  try:
+    image_file_descriptor = open(image_file_path, 'rb')
+    files = {'image': image_file_descriptor}
+    r = requests.post(ninja_api_url, files=files, headers = ninja_headers)
+    long_data = r.json()
+    extractedText = " ".join([v['text'] for v in long_data])
+    return extractedText
+  except:
+    return "Something went wrong reading this receipt..."
 
 def interpret_receipt(text):
   # Define the data payload
