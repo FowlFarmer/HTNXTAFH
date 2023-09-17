@@ -106,7 +106,8 @@ def add_food_bulk():
 
         for food_name in split_lit:
             add_food_item_db(food_name)
-        return redirect(url_for('show_inventory'))
+
+    return redirect(url_for('show_inventory'))
 
 
 # a simple get request for the temp_image.jpg file
@@ -147,7 +148,7 @@ def add_food_post():
     if request.method == 'POST':
         food_name = request.form.get('food_name')
         add_food_item_db(food_name)
-        return redirect(url_for('show_inventory'))
+    return redirect(url_for('show_inventory'))
     
 @app.route('/confirm_food/<string:food_name>', methods=['GET'])
 def confrim_food(food_name):
@@ -183,6 +184,25 @@ def recalculate_expiry(item_id):
         return redirect(url_for('show_inventory'))
     else:
         return "Item not found", 404
+    
+@app.route('/edit_post/<int:item_id>', methods=['GET', 'POST'])
+def edit_post(item_id):
+    if request.method == 'POST':
+        item_to_edit = Item.query.get(item_id)
+        if item_to_edit:
+            new_food_name = request.form['food_name']
+            Item.query.filter_by(id=item_id).update(dict(name=new_food_name))
+            item_to_edit.days_for_expiry = expiry_finder_cohere.ask_expiry(new_food_name)
+            db.session.commit()  
+    return redirect(url_for('show_inventory'))
+
+@app.route('/edit/<int:item_id>', methods=['GET', 'POST'])
+def edit(item_id):
+    item_to_edit = Item.query.get(item_id)
+    name = item_to_edit.name
+    print(name)
+    return render_template('edit.html', item=item_to_edit,name=name)
+ 
     
 # a page to show the recipie
 @app.route('/recipie', methods=['GET'])

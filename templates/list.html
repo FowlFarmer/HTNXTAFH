@@ -48,7 +48,7 @@
                     <th>Name</th>
                     <th>Days Until Expiry</th>
                     <th>Delete Item</th>
-                    <th>Re-estimate Expiry</th>
+                    <th>Edit Item</th>
                     <th>Add in Recipe</th>
                 </tr>
             </thead>
@@ -58,7 +58,7 @@
                     <td>{{ item.name }}</td>
                     <td>{{ expiry_text(item.id) }}</td>
                     <td><a href="{{ url_for('delete_item', item_id=item.id) }}">Delete Item</a></td>
-                    <td><a href="{{ url_for('recalculate_expiry', item_id=item.id) }}">Re-estimate</a></td>
+                    <td><a href="{{ url_for('edit', item_id=item.id) }}">Edit</a></td>
                     <td><input type="checkbox" class="food-checkbox" data-food-name="{{ item.name }}"></td>
                 </tr>
                 {% endfor %}

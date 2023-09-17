@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit entry</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <div class="mainPage">
+        <div class="mainPageBack">
+            <h1 class="confirm">Editing entry id {{item.id}}</h1>
+        </div>
+        
+        <form action="/edit_post/{{item.id}}" method="POST">
+            <input type="text" id="food_name" name="food_name" value="{{ name }}" required/>
+            <input type="submit" value="Update name"/>
+        </form>
+
+        <!-- regeneration  -->
+        <form action="/recalculate_expiry/{{item.id}}" method="POST">
+            <input type="submit" value="Recalculate expiry">
+        </form>
+    </div>
+    
+</body>
+</html>
