@@ -109,11 +109,14 @@ table {
     background-color: white;
 }
 .foodListBG{
-    background-image:url('https://cdn.discordapp.com/attachments/1150455788838596628/1152833444972335114/peepeepoologo18.png');
+    background-image:url('https://cdn.discordapp.com/attachments/1150455788838596628/1152834409066676324/peepeepoologo19.png');
     background-position:center;
     background-size:cover;
-    padding:40px;
+    margin-top:50px;
     border-radius:50px;
+    padding-left:100px;
+    padding-right:100px;
+    margin-bottom:40px;
 }
 
 th, td {
@@ -247,9 +250,8 @@ a:hover {
     z-index:100;
 }
 .foodList{
-    margin-top:50px;
     font-family: 'Comfortaa', sans-serif;
-    font-size:50px;
+    font-size:60px;
     color:#333
 }
 .mainPageBack{
