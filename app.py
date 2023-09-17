@@ -113,6 +113,11 @@ def add_food_bulk():
 def get_temp_image():
     return app.send_static_file('temp_image.jpg')
 
+# a simple get request for the temp_receipt.jpg file
+@app.route('/temp_receipt.jpg', methods=["GET"])
+def get_temp_receipt():
+    return app.send_static_file('temp_receipt.jpg')
+
 @app.route('/', methods=["GET", "POST"])
 def show_inventory():
     if request.method == 'POST':
