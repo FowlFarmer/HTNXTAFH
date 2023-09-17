@@ -8,13 +8,14 @@
 </head>
 <body>
     <div class="mainPage">
-        <h1>Confirm reciept recognition</h1>
-        <h2>PreserVia.tech</h2>
-        <!-- insert the image temp_image.jpg -->
+        <div class="mainPageBack">
+            <h1 class="confirm">Confirm reciept recognition</h1>
         <img src="{{url_for('get_temp_receipt') }}" alt="temp_image.jpg" height=500>
-        <p>Edit the food name in the box below if it's incorrect.</p>
+        <p class="confirm">Edit the food name in the box below if it's incorrect.</p>
+        </div>
+        
         <form action="/add_food_bulk" method="POST">
-            <textarea id="reciept_list" name="reciept_list" required>{{reciept_text}}</textarea>
+            <textarea class="receiptText" id="reciept_list" name="reciept_list" required>{{reciept_text}}</textarea>
             <input type="submit" value="Confirm">
         </form>
     </div>

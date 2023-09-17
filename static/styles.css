@@ -69,6 +69,18 @@ input[type="submit"] {
     font-size: 16px;
     font-family: 'Comfortaa', sans-serif;
 }
+.submitFoods{
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: rgb(10, 148, 81);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+    font-family: 'Comfortaa', sans-serif;
+}
 
 input[type="submit"]:hover {
     background-color: rgba(60, 198, 131);
@@ -93,7 +105,7 @@ table {
     width: 58%;
     margin-top: 20px;
     border-collapse: collapse;
-    margin-bottom:50px;
+    margin-bottom:30px;
     background-color: white;
 }
 
@@ -170,6 +182,17 @@ a:hover {
     padding:10px;
     color:white;
     font-family: 'Comfortaa', sans-serif;
+    margin-bottom:50px;
+    margin-right:20px;
+    margin-left:20px;
+
+}
+.twobuttons{
+    display:flex;
+    justify-content:center;
+}
+.receiptText{
+    font-family: 'Comfortaa', sans-serif;
 }
 .sideBackgroundLeft{
     position:fixed;
@@ -200,4 +223,11 @@ a:hover {
     font-family: 'Comfortaa', sans-serif;
     font-size:45px;
     color:#333
+}
+.mainPageBack{
+    background-color:rgb(157, 166, 83);
+    box-shadow: 0 0 10px 10px rgba(157, 166, 83);
+    margin-right:10px;
+    margin-left:10px;
+    margin-bottom:10px;
 }
