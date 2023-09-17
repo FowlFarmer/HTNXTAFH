@@ -200,9 +200,7 @@ def edit_post(item_id):
 def edit(item_id):
     item_to_edit = Item.query.get(item_id)
     name = item_to_edit.name
-    print(name)
     return render_template('edit.html', item=item_to_edit,name=name)
- 
     
 # a page to show the recipie
 @app.route('/recipie', methods=['GET'])
@@ -222,4 +220,4 @@ def auto_recipie_post():
     return render_template('recipe.html', recipie=recipie)
 
 if __name__ == "__main__":
-    app.run(debug=True,port=8000)
+    app.run(host='0.0.0.0', debug=True,port=8000)

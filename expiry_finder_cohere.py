@@ -107,7 +107,7 @@ def ask_expiry(item_name):
     if len(numbered_day_values) == 0:
       return -1
     else:
-      return sum(numbered_day_values)//len(numbered_day_values)
+      return (sum(numbered_day_values)//len(numbered_day_values)) + 1 # we add one to make it more conservative
   
 if __name__ == "__main__":
   tests = [
