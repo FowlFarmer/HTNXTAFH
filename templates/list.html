@@ -29,9 +29,15 @@
         <div class="sideBackgroundLeft"></div>
         <div class="sideBackgroundRight"></div>
         <div class="twobuttons">
-            <h2><a class="uploadPhoto" href="/upload">Add content</a></h2>
-        <h2><a class="uploadPhoto" href="/auto_recipie">View Recipe</a></h2>
+            <form id="uploadForm" action="/upload" method="get">
+                <button class="uploadPhoto" type="submit">Add content</button>
+            </form>
+            <form id="foodListForm" action="/" method="post">
+                <input type="hidden" name="selectedFoods" id="selectedFoodsInput" value="">
+                <button class="uploadPhoto" type="submit">Submit Selected Foods</button>
+            </form>
         </div>
+        
     
         <table>
             <thead>
@@ -75,6 +81,11 @@
                 updateSelectedFoods();
             });
         });
+
+        function submitSelectedFoods() {
+            // Submit the form with the selected foods
+            document.getElementById('foodListForm').submit();
+        }
     </script>
 </body>
 
