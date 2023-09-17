@@ -231,3 +231,12 @@ a:hover {
     margin-left:10px;
     margin-bottom:10px;
 }
+
+.recipeHolder{ 
+/* keep the recipie holder div's content centered on it, and keep its width to the centered 60% */
+    margin: 0 auto;
+    width: 50%;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+}
