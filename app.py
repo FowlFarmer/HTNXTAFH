@@ -21,7 +21,7 @@ class Item(db.Model):
 def add_food_item_db(food_name):
     expiry_days = expiry_finder_cohere.ask_expiry(food_name)
 
-    # Create a new Food object and add it to the database
+    # Create a new Item object and add it to the database
     new_food = Item(name=food_name, days_for_expiry=expiry_days)
     db.session.add(new_food)
     db.session.commit()
