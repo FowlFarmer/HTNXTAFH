@@ -187,15 +187,16 @@ def recalculate_expiry(item_id):
 # a page to show the recipie
 @app.route('/recipie', methods=['GET'])
 def recipie_example(): # if its a GET request, tell them to go back the main screen and select items, same for if they didnt select any items. If its a POST, generate the recipie and show it
-    return render_template('recipe.html', recipie="<p>Please go back to the main screen and select some items to make a recipie with.</p>")
+    return render_template('recipe.html', recipie="Please go back to the main screen and select some items to make a recipie with.")
 
 @app.route('/auto_recipie', methods=['POST'])
 def auto_recipie_post(): 
-    recipie = "<p>Please go back to the main screen and select some items to make a recipie with.<p/>"
+    recipie = "Please go back to the main screen and select some items to make a recipie with."
     if request.method == 'POST':
         # Get the food name from the form
         integredient_list = request.form['selectedFoodsInput']
-        if len(integredient_list) == 0:
+        print(integredient_list)
+        if len(integredient_list) == 0 or integredient_list == "[]":
             return render_template('recipe.html', recipie=recipie)
         recipie = recipie_creator.generate_recipe(integredient_list)
     return render_template('recipe.html', recipie=recipie)
