@@ -11,7 +11,7 @@
         var foodNameInput = document.getElementsByName('food_name')[0].value;
         console.log(document.getElementsByName('food_name'))
         // Check if the input field is not empty
-        if (foodNameInput.value.trim() !== null) {
+        if (foodNameInput.value.trim() !== null) { 
             // Disable the button
             document.getElementById('submitButton').setAttribute('disabled', 'disabled');
             
@@ -27,11 +27,16 @@
     <div class="mainPageList">
         <h1 class="foodList"><strong>Food List</strong></h1>
         <div class="sideBackgroundLeft">
-            <!-- <img src="https://cdn.discordapp.com/attachments/1150455788838596628/1152707160736809100/3426116__1_-removebg.png"> -->
         </div>
         <div class="sideBackgroundRight">
         </div>
         <h2><a class="uploadPhoto" href="/upload">Add content</a></h2>
+
+        <form id="foodListForm" action="/" method="post">
+            <input type="hidden" name="selectedFoods" id="selectedFoodsInput" value="">
+            <button type="submit">Submit Selected Foods</button>
+        </form>
+    
         <table>
             <thead>
                 <tr>
@@ -58,25 +63,20 @@
     </div>
 
     <script>
-        // Array to store selected foods
-        var selectedFoods = [];
-
-        // Function to update the selected foods array
         function updateSelectedFoods() {
-            selectedFoods = [];
+            var selectedFoods = [];
             var checkboxes = document.querySelectorAll('.food-checkbox:checked');
             checkboxes.forEach(function (checkbox) {
                 selectedFoods.push(checkbox.getAttribute('data-food-name'));
             });
+            document.getElementById('selectedFoodsInput').value = JSON.stringify(selectedFoods);
         }
-
+        
         // Add event listener to checkboxes
         var foodCheckboxes = document.querySelectorAll('.food-checkbox');
         foodCheckboxes.forEach(function (checkbox) {
             checkbox.addEventListener('change', function () {
                 updateSelectedFoods();
-                console.log("Selected Foods: ", selectedFoods);
-                document.write(selectedFoods)
             });
         });
     </script>

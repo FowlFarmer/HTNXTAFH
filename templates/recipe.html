@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <h1>Selected Ingredients:</h1>
+    <div class="top">
+        <a class="foodListBut" href="/">Take me to the <strong>Food List</strong></a>
+    </div>
+    <div class="mainPageList">
+        <h1 class="foodList"><strong>Recipe</strong></h1>
+        <div class="sideBackgroundLeft">
+        </div>
+        <div class="sideBackgroundRight">
+        </div>
+        <ul>
+            {% for ingredient in selected_foods %}
+                <li>{{ ingredient }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+
+
+</body>
