@@ -39,6 +39,7 @@
                     <th>Days Until Expiry</th>
                     <th>Delete Item</th>
                     <th>Re-estimate Expiry</th>
+                    <th>Add in Recipe</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,11 +50,36 @@
                     <td>{{ expiry_text(item.id) }}</td>
                     <td><a href="{{ url_for('delete_item', item_id=item.id) }}">Delete Item</a></td>
                     <td><a href="{{ url_for('recalculate_expiry', item_id=item.id) }}">Re-estimate</a></td>
+                    <td><input type="checkbox" class="food-checkbox" data-food-name="{{ item.name }}"></td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
+
+    <script>
+        // Array to store selected foods
+        var selectedFoods = [];
+
+        // Function to update the selected foods array
+        function updateSelectedFoods() {
+            selectedFoods = [];
+            var checkboxes = document.querySelectorAll('.food-checkbox:checked');
+            checkboxes.forEach(function (checkbox) {
+                selectedFoods.push(checkbox.getAttribute('data-food-name'));
+            });
+        }
+
+        // Add event listener to checkboxes
+        var foodCheckboxes = document.querySelectorAll('.food-checkbox');
+        foodCheckboxes.forEach(function (checkbox) {
+            checkbox.addEventListener('change', function () {
+                updateSelectedFoods();
+                console.log("Selected Foods: ", selectedFoods);
+                document.write(selectedFoods)
+            });
+        });
+    </script>
 </body>
 
 </html> 
