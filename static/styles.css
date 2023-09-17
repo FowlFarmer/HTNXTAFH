@@ -136,17 +136,26 @@ a:hover {
     box-shadow: 0 0 10px 10px rgba(157, 166, 83);
 }
 .top{
-    position:absolute;
+    position:fixed;
     top:0;
     left:75%;
     height:10%;
     margin-top:3%;
     color:white;
+    z-index:1;
 }
 .foodListBut{
     color:white;
     font-family: 'Comfortaa', sans-serif;
     font-size:25px;
+    z-index:1;
+}
+.foodListButt{
+    color:white;
+    font-family: 'Comfortaa', sans-serif;
+    font-size:25px;
+    margin-top:20px;
+    margin-bottom:20px;
 }
 .overlay{
     position:fixed;
@@ -205,6 +214,7 @@ a:hover {
     background-repeat:no-repeat;
     background-size:cover;
     background-color:rgba(157, 166, 83);
+    z-index: 100;
 }
 .sideBackgroundRight{
     position:fixed;
@@ -217,6 +227,7 @@ a:hover {
     background-repeat:no-repeat;
     background-size:cover;
     background-color:rgba(157, 166, 83);
+    z-index:100;
 }
 .foodList{
     margin-top:50px;
