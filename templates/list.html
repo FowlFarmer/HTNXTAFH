@@ -35,9 +35,9 @@
             <form id="uploadForm" action="/upload" method="get">
                 <button class="uploadPhoto" type="submit">Add content</button>
             </form>
-            <form id="foodListForm" action="/" method="post">
-                <input type="hidden" name="selectedFoods" id="selectedFoodsInput" value="">
-                <button class="uploadPhoto" type="submit">Suggest Recipe for Selected Ingredients</button>
+            <form id="foodListForm" action="/auto_recipie" method="post">
+                <input name="selectedFoodsInput" id="selectedFoodsInput" value="">
+                <button class="uploadPhoto" type="submit">Recipe From Selected Foods</button>
             </form>
         </div>
         

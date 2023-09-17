@@ -185,14 +185,20 @@ def recalculate_expiry(item_id):
         return "Item not found", 404
     
 # a page to show the recipie
-@app.route('/auto_recipie', methods=['GET'])
-def auto_recipie(): # if its a GET request, tell them to go back the main screen and select items, same for if they didnt select any items. If its a POST, generate the recipie and show it
-    return render_template('recipe.html')
-    
-    # if request.method == 'POST':
-    #     recipie_creator.generate_recipe()
+@app.route('/recipie', methods=['GET'])
+def recipie_example(): # if its a GET request, tell them to go back the main screen and select items, same for if they didnt select any items. If its a POST, generate the recipie and show it
+    return render_template('recipe.html', recipie="<p>Please go back to the main screen and select some items to make a recipie with.</p>")
 
-    #     # for now just the page
+@app.route('/auto_recipie', methods=['POST'])
+def auto_recipie_post(): 
+    recipie = "<p>Please go back to the main screen and select some items to make a recipie with.<p/>"
+    if request.method == 'POST':
+        # Get the food name from the form
+        integredient_list = request.form['selectedFoodsInput']
+        if len(integredient_list) == 0:
+            return render_template('recipe.html', recipie=recipie)
+        recipie = recipie_creator.generate_recipe(integredient_list)
+    return render_template('recipe.html', recipie=recipie)
 
 if __name__ == "__main__":
     app.run(debug=True,port=8000)
