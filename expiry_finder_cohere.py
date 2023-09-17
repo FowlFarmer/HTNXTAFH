@@ -4,9 +4,7 @@ import re
 import cohere
 co = cohere.Client(COHERE_API_KEY)
 
-TESTING = False
-ASK_TRIES = 3
-TRY_DELAY_S = 5
+TESTING = True
 
 def processs_text_answer(in_text):
 
@@ -71,40 +69,46 @@ def processs_text_answer(in_text):
 
 
 def ask_expiry(item_name):
-  tryCount = 0
-  while tryCount < ASK_TRIES:
-    tryCount += 1
-    # ask the AI
     try:
       response = co.generate(
         prompt=f'You are a robot. How long this food item take to expire in the fridge, in the format, exactly "N days". Be acurate. Assume things are in store bought condition, in their usual packaging. If it does not expire, return "inf", but be conservative with these calls. As a response to "bananas": "7 days". Item: {item_name}',
         model='command',
         max_tokens=10,
         temperature=0.7,
+        num_generations=5,
       )
     except cohere.CohereAPIError:
       print(f"Failed to query cohere API for item {item_name}")
-      # if it fails, we wait the time and then try again
-      if tryCount < ASK_TRIES: # we can go again, then wait
-        print(f"Trying again in {TRY_DELAY_S}s")
-        time.sleep(TRY_DELAY_S)
-      continue
+      return -1
 
     if TESTING:
       print(response)
 
-    response_text = response.generations[0].text
+    days = []
+    for generation in response.generations:
+      days.append(processs_text_answer(generation.text))
 
-    # check that the AI didnt say that it was mad
-    days = processs_text_answer(response_text)
+    print(days)
 
-    if days == -1: # try again if we didnt find an interpreted answer
-      continue
+    # if its 3/5 or more -1s, we just return -1
+    if days.count(-1) >= 3:
+      return -1
     
-    return days
+    # if its 3/5 or more inf, we just return inf
+    if days.count(10000000000000) >= 3:
+      return 10000000000000
+    
+    # if its 3/5 or more infs or -1s, we just return -1
+    if days.count(10000000000000) + days.count(-1) >= 3:
+      return -1
+    
+    # otherwise, we take the average of the non -1s and non infs
+    numbered_day_values = [x for x in days if x != -1 and x != 10000000000000]
+    if len(numbered_day_values) == 0:
+      return -1
+    else:
+      return sum(numbered_day_values)//len(numbered_day_values)
   
-  return -1 # we didn't get an answer in the end
-
 if __name__ == "__main__":
   tests = [
     "bok choy",
