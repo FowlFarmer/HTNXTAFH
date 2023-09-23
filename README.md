@@ -1,5 +1,13 @@
 # HTNXTAFH
-Theodore, Helen, Alex, Freddy
+## Preservia.tech , your personal virtual grocery inventory!
+## Scan your groceries or your reciepts and automatically catalogue them in your personal virtual inventory.
+## Automatically track expiration dates and minimize food waste!
+## Create instant recipes with the ingredients you have!
+
+
+
+
+By Theodore, Helen, Alex, Freddy
 
 ## How to run
 1. Install the requirements
